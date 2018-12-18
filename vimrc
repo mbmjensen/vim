@@ -11,6 +11,7 @@ let g:mapleader = ' '
 
 " Load filetype settings, plugins, and maps
 filetype plugin indent on
+syntax enable
 
 " Default indent settings
 " Defaults tweaked by filetype in vim/indent/ or vim/after/indent/
@@ -83,12 +84,13 @@ set nojoinspaces
 set lazyredraw
 
 " Extra 'list' display character options
+set list                   " Turn on list characters by default
+set listchars=             " Clear the default listchars
 set listchars+=tab:»\      " Tab characters, preserve width
 set listchars+=extends:›   " Unwrapped text to screen right
 set listchars+=precedes:‹  " Unwrapped text to screen left
 set listchars+=trail:•     " Trailing spaces
 set listchars+=nbsp:•      " Non-breaking spaces
-set list                   " Turn on list characters by default
 
 " New windows go below or right of a split
 set splitbelow
