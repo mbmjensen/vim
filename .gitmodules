@@ -4,3 +4,6 @@
 [submodule "pack/submodules/start/vim-surround"]
 	path = pack/submodules/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "pack/submodules/start/vim-fugitive"]
+	path = pack/submodules/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
