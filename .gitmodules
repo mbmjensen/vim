@@ -10,3 +10,6 @@
 [submodule "pack/submodules/start/vim-gitgutter"]
 	path = pack/submodules/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "pack/submodules/start/vim-commentary"]
+	path = pack/submodules/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
