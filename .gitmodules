@@ -7,3 +7,6 @@
 [submodule "pack/submodules/start/vim-fugitive"]
 	path = pack/submodules/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule "pack/submodules/start/vim-gitgutter"]
+	path = pack/submodules/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
