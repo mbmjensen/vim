@@ -2,3 +2,4 @@ cache/swap/*
 cache/backup/*
 cache/undo/*
 !cache/**/README.md
+.netrwhist
