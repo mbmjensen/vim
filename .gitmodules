@@ -13,3 +13,6 @@
 [submodule "pack/submodules/start/vim-commentary"]
 	path = pack/submodules/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "pack/submodules/start/papercolor-theme"]
+	path = pack/submodules/start/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme
