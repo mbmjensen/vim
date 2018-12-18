@@ -28,8 +28,22 @@ set backspace+=start   " The start of the current insertion
 " Wrap options
 silent! set breakindent  " Indent wrapped lines
 set showbreak=...        " Prefix wrapped rows with 3 dots
-set linebreak            " Wrap lines at word boundaries (does not insert
-                         " newlines in file)
+set linebreak            " Wrap lines at word boundaries
+
+" Extra 'list' display character options
+set list                   " Turn on list characters by default
+set listchars=             " Clear the default listchars
+set listchars+=tab:»\      " Tab characters, preserve width
+set listchars+=extends:›   " Unwrapped text to screen right
+set listchars+=precedes:‹  " Unwrapped text to screen left
+set listchars+=trail:•     " Trailing spaces
+set listchars+=nbsp:•      " Non-breaking spaces
+
+" Appearance settings
+set background=light    " Default to light background
+colorscheme PaperColor  " Default to PaperColor theme
+set colorcolumn=80      " Mark the 80th char to suggest max line length
+set cursorline          " Show the line where the cursor is
 
 " Keep backups in one dir
 set backup
@@ -82,15 +96,6 @@ set nojoinspaces
 
 " Don't redraw the screen on macros, registers, nor other untyped commands
 set lazyredraw
-
-" Extra 'list' display character options
-set list                   " Turn on list characters by default
-set listchars=             " Clear the default listchars
-set listchars+=tab:»\      " Tab characters, preserve width
-set listchars+=extends:›   " Unwrapped text to screen right
-set listchars+=precedes:‹  " Unwrapped text to screen left
-set listchars+=trail:•     " Trailing spaces
-set listchars+=nbsp:•      " Non-breaking spaces
 
 " New windows go below or right of a split
 set splitbelow
