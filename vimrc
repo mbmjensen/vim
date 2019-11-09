@@ -45,8 +45,13 @@ colorscheme PaperColor  " Default to PaperColor theme
 set colorcolumn=80      " Mark the 80th char to suggest max line length
 set cursorline          " Show the line where the cursor is
 if &term =~ "xterm"     " Make cursor a line on insert mode, but block otherwise
-    let &t_SI = "\e[6 q"    
+    let &t_SI = "\e[6 q"
     let &t_EI = "\e[2 q"
+endif
+
+" Set the cursor when entering VIM
+if has("autocmd")
+    au VimEnter * silent !echo "\e[2 q"
 endif
 
 " Keep backups in one dir
