@@ -1,13 +1,13 @@
 " Michael Jensen's vimrc
 "
-" This configuration is only tested and configured on Vim 8.1 and up.
+" This configuration is only tested and configured on Vim 8.2 and up.
 
 " Check that current VIM instance is compatible
-if &compatible || v:version < 801
+if &compatible || v:version < 802
   finish
 endif
 
-let g:mapleader = ' '
+let g:mapleader = " "
 
 " Load filetype settings, plugins, and maps
 filetype plugin indent on
@@ -40,6 +40,7 @@ set listchars+=trail:•     " Trailing spaces
 set listchars+=nbsp:•      " Non-breaking spaces
 
 " Appearance settings
+set termguicolors " Indicate that the terminal supports True Color
 set background=light    " Default to light background
 colorscheme PaperColor  " Default to PaperColor theme
 set colorcolumn=80      " Mark the 80th char to suggest max line length
@@ -49,38 +50,32 @@ if &term =~ "xterm"     " Make cursor a line on insert mode, but block otherwise
     let &t_EI = "\e[2 q"
 endif
 
-" Set the cursor when entering VIM
+" Set the cursor when entering VIM. I Tried setting the cursor manually, which
+" works, but displays escape codes at the bottom of the screen. This solution
+" avoids this problem.
 if has("autocmd")
-    au VimEnter * silent !echo "\e[2 q"
+    au VimEnter * silent normal i
 endif
+
+" Move the viminfo into the vim directory
+set viminfo+=n~/.config/vim/.viminfo
 
 " Keep backups in one dir
 set backup
 set backupdir^=~/.vim/cache/backup
-if has('win32') || has('win64')
-  set backupdir-=~/.vim/cache/backup
-  set backupdir^=~/vimfiles/cache/backup
-endif
 
 " Keep swapfiles in one dir
-set directory^=~/.vimcache/swap//
-if has('win32') || has('win64')
-  set directory-=~/.vim/cache/swap//
-  set directory^=~/vimfiles/cache/swap//
-endif
+set directory^=~/.vim/cache/swap
 
 " Keep undo files, if possible
 if has('persistent_undo')
   set undofile
-  set undodir^=~/.vim/cache/undo//
-  if has('win32') || has('win64')
-    set undodir-=~/.vim/cache/undo//
-    set undodir^=~/vimfiles/cache/undo//
-  endif
+  set undodir^=~/.vim/cache/undo
 endif
 
-"Options for file search gf/:find
+" Include settings (get rid of C defaults)
 set path-=/usr/include  " Put filetype specific settings in filetypes
+set include=
 
 " Give a prompt instead of rejecting commands such as a risky :write
 set confirm
@@ -93,14 +88,12 @@ endif
 " Delete comment leaders when joining lines
 set formatoptions+=j
 
-" Don't assume we are editing C
-" Set this in filetype
-set include=
+" Search Settings
+set incsearch   " Show the search pattern while typing
+set ignorecase  " Make the search case-insensitive by default
+set smartcase   " Unless an uppercase character is in the pattern
 
-" Show search matches as we type the pattern
-set incsearch
-
-" Don't at two spaces to the end of sentences on a join
+" Don't add two spaces to the end of sentences on a join
 set nojoinspaces
 
 " Don't redraw the screen on macros, registers, nor other untyped commands
@@ -109,3 +102,8 @@ set lazyredraw
 " New windows go below or right of a split
 set splitbelow
 set splitright
+
+" Apply vimrc local overrides
+if filereadable(expand("~/.vim/vimrc.local"))
+    source ~/.vim/vimrc.local
+endif

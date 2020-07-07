@@ -1,5 +1,6 @@
 cache/swap/*
 cache/backup/*
 cache/undo/*
-!cache/**/README.md
+.viminfo
 .netrwhist
+vimrc.local

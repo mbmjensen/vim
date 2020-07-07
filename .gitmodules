@@ -16,3 +16,22 @@
 [submodule "pack/submodules/start/papercolor-theme"]
 	path = pack/submodules/start/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme
+[submodule "pack/submodules/start/tagbar"]
+	path = pack/submodules/start/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "pack/submodules/start/ultisnips"]
+	path = pack/submodules/start/ultisnips
+	url = https://github.com/SirVer/ultisnips
+[submodule "pack/submodules/start/fzf.vim"]
+	path = pack/submodules/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "pack/submodules/start/vim-easy-align"]
+	path = pack/submodules/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
+[submodule "pack/submodules/start/goyo.vim"]
+	path = pack/submodules/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "pack/submodules/start/coc.nvim"]
+	path = pack/submodules/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+	branch = release
