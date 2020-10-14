@@ -43,7 +43,7 @@ set listchars+=nbsp:•      " Non-breaking spaces
 set termguicolors " Indicate that the terminal supports True Color
 set background=light    " Default to light background
 colorscheme PaperColor  " Default to PaperColor theme
-set colorcolumn=80      " Mark the 80th char to suggest max line length
+set colorcolumn=89      " Mark the 89th char to suggest max line length at 88 (black)
 set cursorline          " Show the line where the cursor is
 if &term =~ "xterm"     " Make cursor a line on insert mode, but block otherwise
     let &t_SI = "\e[6 q"
@@ -102,6 +102,10 @@ set lazyredraw
 " New windows go below or right of a split
 set splitbelow
 set splitright
+
+" Edit and source vimrc
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Apply vimrc local overrides
 if filereadable(expand("~/.vim/vimrc.local"))
