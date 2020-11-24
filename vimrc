@@ -103,11 +103,3 @@ set lazyredraw
 set splitbelow
 set splitright
 
-" Edit and source vimrc
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" Apply vimrc local overrides
-if filereadable(expand("~/.vim/vimrc.local"))
-    source ~/.vim/vimrc.local
-endif
