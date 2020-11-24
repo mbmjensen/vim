@@ -103,3 +103,24 @@ set lazyredraw
 set splitbelow
 set splitright
 
+" Use common shell bindings in insert and command mode
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-k> <C-o>D
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-e> <End>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap <C-b> <Left>
+
+" Run a shell command and insert in the current line
+nnoremap <Leader>c i<C-r>=system('')<Left><Left>
+
+" Save and quit vim
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>wq :wqa<CR>
+
+" Edit and load vimrc
+nnoremap <leader>ev :call vimrc#edit()<CR>
+nnoremap <leader>lv :call vimrc#save_and_source()<CR>
