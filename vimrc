@@ -103,6 +103,9 @@ set lazyredraw
 set splitbelow
 set splitright
 
+" Set the delay for key code sequences (not key mappings)
+set ttimeoutlen=100
+
 " Use common shell bindings in insert and command mode
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
