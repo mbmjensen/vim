@@ -1,6 +1,6 @@
 " Enable fzf plugin.
-set rtp+=/usr/local/opt/fzf
-source /usr/local/opt/fzf/plugin/fzf.vim
+set rtp+=$DEV_DIR/fzf/bin
+source $DEV_DIR/fzf/plugin/fzf.vim
 
 " Customize fzf colors to match colorscheme, see
 " https://github.com/junegunn/fzf/blob/master/README-VIM.md
