@@ -8,6 +8,7 @@ if &compatible || v:version < 802
 endif
 
 let g:mapleader = " "
+map <CR> <Leader>
 
 " Load filetype settings, plugins, and maps
 filetype plugin indent on
@@ -40,7 +41,7 @@ set listchars+=trail:•     " Trailing spaces
 set listchars+=nbsp:•      " Non-breaking spaces
 
 " Appearance settings
-set termguicolors " Indicate that the terminal supports True Color
+set termguicolors       " Indicate that the terminal supports True Color
 set background=light    " Default to light background
 colorscheme PaperColor  " Default to PaperColor theme
 set colorcolumn=89      " Mark the 89th char to suggest max line length at 88 (black)
@@ -139,14 +140,89 @@ cnoremap <C-e> <End>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-b> <Left>
 
+" Use Fzf for completions where applicable
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+
 " Run a shell command and insert in the current line
 nnoremap <Leader>c i<C-r>=system('')<Left><Left>
 
-" Save and quit vim
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>wq :wqa<CR>
+" Configure WhichKey
+nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
-" Edit and load vimrc
-nnoremap <leader>ev :call vimrc#edit()<CR>
-nnoremap <leader>lv :call vimrc#save_and_source()<CR>
+let g:which_key_map =  {}
+let g:which_key_sep = '→'
+
+let g:which_key_map.q = ['q',   'quit']
+let g:which_key_map.w = ['w',   'write']
+let g:which_key_map.a = ['wqa', ':wqa']
+
+let g:which_key_map.f = { 'name' : '+format' }
+nnoremap <leader>fa :EasyAlign<CR>
+vnoremap <leader>fa :EasyAlign<CR>
+let g:which_key_map.f.a = 'align'
+
+let g:which_key_map.t = {
+    \ 'name' : '+toggle',
+    \ 'n' : [':set number!', 'line numbers'],
+    \ }
+
+let g:which_key_map.e = {
+    \ 'name' : '+edit',
+    \ 'v' : ['vimrc#edit()', 'vimrc'],
+    \ }
+
+let g:which_key_map.l = {
+    \ 'name' : '+load',
+    \ 'v' : ['vimrc#save_and_source()', 'vimrc'],
+    \ }
+
+let g:which_key_map.f = {
+    \ 'name' : '+find',
+    \ '/' : [':History/'     , 'history'],
+    \ ';' : [':Commands'     , 'commands'],
+    \ 'b' : [':BLines'       , 'current buffer'],
+    \ 'B' : [':Buffers'      , 'open buffers'],
+    \ 'c' : [':Commits'      , 'commits'],
+    \ 'C' : [':BCommits'     , 'buffer commits'],
+    \ 'f' : [':Files'        , 'files'],
+    \ 'F' : [':Filetypes'    , 'file types'],
+    \ 'g' : [':GFiles'       , 'git files'],
+    \ 'G' : [':GFiles?'      , 'modified git files'],
+    \ 'h' : [':History'      , 'file history'],
+    \ 'H' : [':History:'     , 'command history'],
+    \ 'l' : [':Lines'        , 'lines'],
+    \ 'm' : [':Marks'        , 'marks'],
+    \ 'p' : [':Helptags'     , 'help tags'],
+    \ 's' : [':Snippets'     , 'snippets'],
+    \ 'S' : [':Colors'       , 'color schemes'],
+    \ 't' : [':Rg'           , 'text Rg'],
+    \ 'w' : [':Windows'      , 'search windows'],
+    \ 'z' : [':FZF'          , 'FZF'],
+    \ }
+
+let g:which_key_map.g = {
+    \ 'name' : '+git' ,
+    \ 'b' : [':Git blame',         'blame'],
+    \ 's' : [':Git',               'status'],
+    \ 'c' : [':Git commit',        'commit'],
+    \ 'q' : [':GitGutterQuickFix', 'quickfix'],
+    \ 'w' : [':GBrowse',           'browse'],
+    \ }
+
+let g:which_key_map.n = {
+    \ 'name' : '+next' ,
+    \ 'b' : [':bnext',             'buffer'],
+    \ 'h' : [':GitGutterNextHunk', 'hunk (git)'],
+    \ 'q' : [':cnext',             'quickfix'],
+    \ }
+
+let g:which_key_map.p = {
+    \ 'name' : '+previous' ,
+    \ 'b' : [':bprevious',         'buffer'],
+    \ 'h' : [':GitGutterPrevHunk', 'hunk (git)'],
+    \ 'q' : [':cprevious',         'quickfix'],
+    \ }
+
+" Register which key map
+autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")

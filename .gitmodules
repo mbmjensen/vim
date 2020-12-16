@@ -38,3 +38,6 @@
 [submodule "pack/submodules/start/vim-rhubarb"]
 	path = pack/submodules/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
+[submodule "pack/submodules/start/vim-which-key"]
+	path = pack/submodules/start/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key
