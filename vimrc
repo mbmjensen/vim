@@ -106,6 +106,29 @@ set splitright
 " Set the delay for key code sequences (not key mappings)
 set ttimeoutlen=100
 
+" Use s for [s]earch instead of [s]ubstitute
+nnoremap s <nop>
+nnoremap <silent> sf :Files<CR>
+nnoremap <silent> sb :Buffers<CR>
+nnoremap <silent> sj :Marks<CR>
+nnoremap <silent> sm :Maps<CR>
+nnoremap <silent> sh :Helptags<CR>
+nnoremap <silent> ss :Snippets<CR>
+nnoremap <silent> sg :GFiles<CR>
+nnoremap <silent> sw :Windows<CR>
+nnoremap <silent> sl :Lines<CR>
+nnoremap <silent> sL :BLines<Space>
+nnoremap <silent> sc :Commits<CR>
+nnoremap <silent> sC :BCommits<CR>
+nnoremap <silent> st :Filetypes<CR>
+
+nnoremap <silent> q/ :History/<CR>
+nnoremap <silent> q: :History:<CR>
+
+" Hook fzf into ins-completion (i_Ctrl-x)
+imap <C-x><C-l> <plug>(fzf-complete-line)
+imap <C-x><C-f> <plug>(fzf-complete-path)
+
 " Use common shell bindings in insert and command mode
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
