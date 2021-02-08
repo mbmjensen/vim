@@ -153,7 +153,8 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 let g:which_key_map =  {}
 let g:which_key_sep = '→'
 
-let g:which_key_map.q = ['q',   'quit']
+nnoremap <silent> <leader>q :q!<CR>
+let g:which_key_map.q = 'quit'
 let g:which_key_map.w = ['w',   'write']
 let g:which_key_map.a = ['wqa', ':wqa']
 
