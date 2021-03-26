@@ -131,7 +131,7 @@ imap <C-x><C-l> <plug>(fzf-complete-line)
 imap <C-x><C-f> <plug>(fzf-complete-path)
 
 " Use common shell bindings in insert and command mode
-inoremap <C-a> <Home>
+inoremap <C-a> <C-o>^
 inoremap <C-e> <End>
 inoremap <C-k> <C-o>D
 cnoremap <C-a> <Home>
