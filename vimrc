@@ -225,5 +225,7 @@ let g:which_key_map.p = {
     \ 'q' : [':cprevious',         'quickfix'],
     \ }
 
+vnoremap <leader>y "+y
+
 " Register which key map
 autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")

@@ -3,4 +3,4 @@ cache/backup/*
 cache/undo/*
 .viminfo
 .netrwhist
-vimrc.local
+*.swp
