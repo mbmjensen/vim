@@ -6,5 +6,5 @@ My personal vim configuration settings.
 
 This Vim configuration assumes:
 ```
-Vim >=8.1
+Vim >=8.2
 ```
