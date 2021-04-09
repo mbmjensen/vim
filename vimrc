@@ -41,7 +41,11 @@ set listchars+=trail:•     " Trailing spaces
 set listchars+=nbsp:•      " Non-breaking spaces
 
 " Appearance settings
-set termguicolors       " Indicate that the terminal supports True Color
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"    " Fix true color support for tmux, see
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"    " https://github.com/tmux/tmux/issues/1246#issue-292083184
+  set termguicolors                         " Indicate that the terminal supports True Color
+endif
 set background=light    " Default to light background
 colorscheme PaperColor  " Default to PaperColor theme
 set colorcolumn=89      " Mark the 89th char to suggest max line length at 88 (black)
