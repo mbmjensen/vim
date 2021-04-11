@@ -43,11 +43,12 @@ if exists('+termguicolors')
   let &t_8b = "\<esc>[48;2;%lu;%lu;%lum"    " https://github.com/tmux/tmux/issues/1246#issue-292083184
   set termguicolors                         " Indicate that the terminal supports True Color
 endif
-set background=light    " Default to light background
-colorscheme PaperColor  " Default to PaperColor theme
-set colorcolumn=89      " Mark the 89th char to suggest max line length at 88 (black)
-set cursorline          " Show the line where the cursor is
-if &term =~ 'xterm'     " Make cursor a line on insert mode, but block otherwise
+set background=light   " Default to light background
+colorscheme PaperColor " Default to PaperColor theme
+set signcolumn=number  " Merge the signcolumn and the number when the number column is active
+set cursorline         " Show the line where the cursor is
+set colorcolumn=89     " Mark the 89th char to suggest max line length at 88 (black)
+if &term =~ 'xterm'    " Make cursor a line on insert mode, but block otherwise
     let &t_SI = "\<esc>[6 q"
     let &t_EI = "\<esc>[2 q"
 endif
@@ -59,8 +60,8 @@ if has('autocmd')
     autocmd VimEnter * silent normal i
 endif
 
-" Move the viminfo into the vim directory
-set viminfo+=n~/.config/vim/.viminfo
+" Move the viminfo into the vim directory (n denotes name of viminfo file)
+set viminfo+=n~/.vim/.viminfo
 
 " Keep swapfiles in one dir
 set directory^=~/.vim/cache/swap
@@ -139,9 +140,6 @@ cnoremap <C-b> <left>
 
 " Use Fzf for completions where applicable
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
-
-" Run a shell command and insert in the current line
-nnoremap <space>c i<c-r>=system('')<left><left>
 
 " Provide a interactive cheat-sheet for leader mappings with WhichKey
 "" Configure general settings
@@ -227,11 +225,25 @@ let g:which_key_map_n.p = {
     \ 'q' : [':cprevious',         'quickfix'],
     \ }
 
-vnoremap <space>y "+y
+let g:which_key_map_n.r = ["<plug>(coc-rename)", "rename"]
+
+let g:which_key_map_n.c = {
+    \ "name": "+coc",
+    \ "a": [":CocAction", "action"],
+    \ "c": [":CocCommand", "command"],
+    \ "d": [":CocDiagnostics", "diagnostics"],
+    \ "r": [":CocRestart", "restart"],
+    \ "e": [":CocConfig", "edit-config"],
+    \ "l": [":CocList", "list"],
+    \ "o": [":CocLocalConfig", "edit-local-config"],
+    \ "u": [":CocUpdate", "update"],
+    \ }
 
 "" Configure Visual mode mappings
 let g:which_key_map_v = {}
 let g:which_key_map_v.a = [":'<,'>EasyAlign", 'align']
+let g:which_key_map_v.y = ['"+y', "copy"]
+let g:which_key_map_v.f = ["<plug>(coc-format-selected)", "format"]
 
 "" Register WhichKey mappings
 nnoremap <silent> <space> :WhichKey 'Normal'<cr>
