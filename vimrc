@@ -62,10 +62,6 @@ endif
 " Move the viminfo into the vim directory
 set viminfo+=n~/.config/vim/.viminfo
 
-" Keep backups in one dir
-set backup
-set backupdir^=~/.vim/cache/backup
-
 " Keep swapfiles in one dir
 set directory^=~/.vim/cache/swap
 
