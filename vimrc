@@ -7,9 +7,6 @@ if &compatible || v:version < 802
   finish
 endif
 
-let g:mapleader = " "
-map <CR> <Leader>
-
 " Load filetype settings, plugins, and maps
 filetype plugin indent on
 syntax enable
@@ -50,7 +47,7 @@ set background=light    " Default to light background
 colorscheme PaperColor  " Default to PaperColor theme
 set colorcolumn=89      " Mark the 89th char to suggest max line length at 88 (black)
 set cursorline          " Show the line where the cursor is
-if &term =~ "xterm"     " Make cursor a line on insert mode, but block otherwise
+if &term =~ 'xterm'     " Make cursor a line on insert mode, but block otherwise
     let &t_SI = "\<esc>[6 q"
     let &t_EI = "\<esc>[2 q"
 endif
@@ -58,8 +55,8 @@ endif
 " Set the cursor when entering VIM. I Tried setting the cursor manually, which
 " works, but displays escape codes at the bottom of the screen. This solution
 " avoids this problem.
-if has("autocmd")
-    au VimEnter * silent normal i
+if has('autocmd')
+    autocmd VimEnter * silent normal i
 endif
 
 " Move the viminfo into the vim directory
@@ -113,101 +110,106 @@ set ttimeoutlen=100
 
 " Use s for [s]earch instead of [s]ubstitute
 nnoremap s <nop>
-nnoremap <silent> sf :Files<CR>
-nnoremap <silent> sb :Buffers<CR>
-nnoremap <silent> sj :Marks<CR>
-nnoremap <silent> sm :Maps<CR>
-nnoremap <silent> sh :Helptags<CR>
-nnoremap <silent> ss :Snippets<CR>
-nnoremap <silent> sg :GFiles<CR>
-nnoremap <silent> sw :Windows<CR>
-nnoremap <silent> sl :Lines<CR>
-nnoremap <silent> sL :BLines<Space>
-nnoremap <silent> sc :Commits<CR>
-nnoremap <silent> sC :BCommits<CR>
-nnoremap <silent> st :Filetypes<CR>
+nnoremap <silent> sf :Files<cr>
+nnoremap <silent> sb :Buffers<cr>
+nnoremap <silent> sj :Marks<cr>
+nnoremap <silent> sm :Maps<cr>
+nnoremap <silent> sh :Helptags<cr>
+nnoremap <silent> ss :Snippets<cr>
+nnoremap <silent> sg :GFiles<cr>
+nnoremap <silent> sw :Windows<cr>
+nnoremap <silent> sl :Lines<cr>
+nnoremap <silent> sL :BLines<cr>
+nnoremap <silent> sc :Commits<cr>
+nnoremap <silent> sC :BCommits<cr>
+nnoremap <silent> st :Filetypes<cr>
 
-nnoremap <silent> q/ :History/<CR>
-nnoremap <silent> q: :History:<CR>
+nnoremap <silent> q/ :History/<cr>
+nnoremap <silent> q: :History:<cr>
 
 " Hook fzf into ins-completion (i_Ctrl-x)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 imap <C-x><C-f> <plug>(fzf-complete-path)
 
 " Use common shell bindings in insert and command mode
-inoremap <C-a> <C-o>^
-inoremap <C-e> <End>
-inoremap <C-k> <C-o>D
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-e> <End>
-cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
-cnoremap <C-b> <Left>
+inoremap <C-a> <c-o>^
+inoremap <C-e> <end>
+inoremap <C-k> <c-o>D
+cnoremap <C-a> <home>
+cnoremap <C-e> <end>
+cnoremap <C-e> <end>
+cnoremap <C-k> <c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<cr>
+cnoremap <C-b> <left>
 
 " Use Fzf for completions where applicable
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
 
 " Run a shell command and insert in the current line
-nnoremap <Leader>c i<C-r>=system('')<Left><Left>
+nnoremap <space>c i<c-r>=system('')<left><left>
 
-" Configure WhichKey
-nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
-let g:which_key_map =  {}
+" Provide a interactive cheat-sheet for leader mappings with WhichKey
+"" Configure general settings
 let g:which_key_sep = '→'
 
-nnoremap <silent> <leader>q :q!<CR>
-let g:which_key_map.q = 'quit'
-let g:which_key_map.w = ['w',   'write']
-let g:which_key_map.a = ['wqa', ':wqa']
+"" Configure Normal mode mappings
+let g:which_key_map_n =  {}
 
-let g:which_key_map.f = { 'name' : '+format' }
-nnoremap <leader>fa :EasyAlign<CR>
-vnoremap <leader>fa :EasyAlign<CR>
-let g:which_key_map.f.a = 'align'
+nnoremap <silent> <space>q :q!<cr>
+let g:which_key_map_n.q = 'quit'
+let g:which_key_map_n.w = ['w',   'write']
+let g:which_key_map_n.x = ['x',   'save/quit']
 
-let g:which_key_map.t = {
+
+let g:which_key_map_n.t = {
     \ 'name' : '+toggle',
     \ 'n' : [':set number!', 'line numbers'],
+    \ 's' : [':set spell!',  'spell check'],
     \ }
 
-let g:which_key_map.e = {
+let g:which_key_map_n.e = {
     \ 'name' : '+edit',
     \ 'v' : ['vimrc#edit()', 'vimrc'],
     \ }
 
-let g:which_key_map.l = {
+let g:which_key_map_n.l = {
     \ 'name' : '+load',
     \ 'v' : ['vimrc#save_and_source()', 'vimrc'],
     \ }
 
-let g:which_key_map.f = {
-    \ 'name' : '+find',
-    \ '/' : [':History/'     , 'history'],
-    \ ';' : [':Commands'     , 'commands'],
-    \ 'b' : [':BLines'       , 'current buffer'],
-    \ 'B' : [':Buffers'      , 'open buffers'],
-    \ 'c' : [':Commits'      , 'commits'],
-    \ 'C' : [':BCommits'     , 'buffer commits'],
-    \ 'f' : [':Files'        , 'files'],
-    \ 'F' : [':Filetypes'    , 'file types'],
-    \ 'g' : [':GFiles'       , 'git files'],
-    \ 'G' : [':GFiles?'      , 'modified git files'],
-    \ 'h' : [':History'      , 'file history'],
-    \ 'H' : [':History:'     , 'command history'],
-    \ 'l' : [':Lines'        , 'lines'],
-    \ 'm' : [':Marks'        , 'marks'],
-    \ 'p' : [':Helptags'     , 'help tags'],
-    \ 's' : [':Snippets'     , 'snippets'],
-    \ 'S' : [':Colors'       , 'color schemes'],
-    \ 't' : [':Rg'           , 'text Rg'],
-    \ 'w' : [':Windows'      , 'search windows'],
-    \ 'z' : [':FZF'          , 'FZF'],
+let g:which_key_map_n.s = {
+    \ 'name' : '+search',
+    \ '/' : [':History/',  'history'],
+    \ ';' : [':Commands',  'commands'],
+    \ 'b' : [':BLines',    'current buffer'],
+    \ 'B' : [':Buffers',   'open buffers'],
+    \ 'c' : [':Commits',   'commits'],
+    \ 'C' : [':BCommits',  'buffer commits'],
+    \ 'f' : [':Files',     'files'],
+    \ 'F' : [':Filetypes', 'file types'],
+    \ 'g' : [':GFiles',    'git files'],
+    \ 'G' : [':GFiles?',   'modified git files'],
+    \ 'h' : [':History',   'file history'],
+    \ 'H' : [':History:',  'command history'],
+    \ 'l' : [':Lines',     'lines'],
+    \ 'm' : [':Marks',     'marks'],
+    \ 'p' : [':Helptags',  'help tags'],
+    \ 's' : [':Snippets',  'snippets'],
+    \ 'S' : [':Colors',    'color schemes'],
+    \ 't' : [':Rg',        'text Rg'],
+    \ 'w' : [':Windows',   'search windows'],
+    \ 'z' : [':FZF',       'FZF'],
     \ }
 
-let g:which_key_map.g = {
-    \ 'name' : '+git' ,
+nnoremap <silent> <space>oq  :copen<CR>
+nnoremap <silent> <space>ol  :lopen<CR>
+let g:which_key_map_n.o = {
+      \ 'name' : '+open',
+      \ 'q' : 'open-quickfix'    ,
+      \ 'l' : 'open-locationlist',
+      \ }
+
+let g:which_key_map_n.g = {
+    \ 'name' : '+git',
     \ 'b' : [':Git blame',         'blame'],
     \ 's' : [':Git',               'status'],
     \ 'c' : [':Git commit',        'commit'],
@@ -215,21 +217,28 @@ let g:which_key_map.g = {
     \ 'w' : [':GBrowse',           'browse'],
     \ }
 
-let g:which_key_map.n = {
+let g:which_key_map_n.n = {
     \ 'name' : '+next' ,
     \ 'b' : [':bnext',             'buffer'],
     \ 'h' : [':GitGutterNextHunk', 'hunk (git)'],
     \ 'q' : [':cnext',             'quickfix'],
     \ }
 
-let g:which_key_map.p = {
+let g:which_key_map_n.p = {
     \ 'name' : '+previous' ,
     \ 'b' : [':bprevious',         'buffer'],
     \ 'h' : [':GitGutterPrevHunk', 'hunk (git)'],
     \ 'q' : [':cprevious',         'quickfix'],
     \ }
 
-vnoremap <leader>y "+y
+vnoremap <space>y "+y
 
-" Register which key map
-autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")
+"" Configure Visual mode mappings
+let g:which_key_map_v = {}
+let g:which_key_map_v.a = [":'<,'>EasyAlign", 'align']
+
+"" Register WhichKey mappings
+nnoremap <silent> <space> :WhichKey 'Normal'<cr>
+vnoremap <silent> <space> :WhichKeyVisual 'Visual'<cr>
+autocmd VimEnter * call which_key#register('Normal', 'g:which_key_map_n')
+autocmd VimEnter * call which_key#register('Visual', 'g:which_key_map_v')
