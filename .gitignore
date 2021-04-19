@@ -1,7 +1,5 @@
 cache/swap/*
 cache/backup/*
 cache/undo/*
-pack
 .viminfo
 .netrwhist
-*.swp
