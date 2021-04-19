@@ -1,0 +1,1 @@
+nnoremap cy :Git switch 
