@@ -44,3 +44,18 @@
 [submodule "pack/submodules/start/vim-repeat"]
 	path = pack/submodules/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "pack/submodules/start/vim-dadbod"]
+	path = pack/submodules/start/vim-dadbod
+	url = https://github.com/tpope/vim-dadbod
+[submodule "pack/submodules/start/vim-endwise"]
+	path = pack/submodules/start/vim-endwise
+	url = https://github.com/tpope/vim-endwise
+[submodule "pack/submodules/start/vim-eunoch"]
+	path = pack/submodules/start/vim-eunoch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "pack/submodules/start/vim-jdaddy"]
+	path = pack/submodules/start/vim-jdaddy
+	url = https://github.com/tpope/vim-jdaddy
+[submodule "pack/submodules/start/vim-speeddating"]
+	path = pack/submodules/start/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating
