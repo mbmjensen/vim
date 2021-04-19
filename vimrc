@@ -89,13 +89,13 @@ endif
 " Delete comment leaders when joining lines
 set formatoptions+=j
 
+" Don't add two spaces to the end of sentences on a join
+set nojoinspaces
+
 " Search Settings
 set incsearch   " Show the search pattern while typing
 set ignorecase  " Make the search case-insensitive by default
 set smartcase   " Unless an uppercase character is in the pattern
-
-" Don't add two spaces to the end of sentences on a join
-set nojoinspaces
 
 " Don't redraw the screen on macros, registers, nor other untyped commands
 set lazyredraw
@@ -128,7 +128,7 @@ nnoremap <silent> q: :History:<cr>
 
 " Hook fzf into ins-completion (i_Ctrl-x)
 imap <C-x><C-l> <plug>(fzf-complete-line)
-imap <C-x><C-f> <plug>(fzf-complete-path)
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
 
 " Use common shell bindings in insert and command mode
 inoremap <C-a> <c-o>^
@@ -139,9 +139,6 @@ cnoremap <C-e> <end>
 cnoremap <C-e> <end>
 cnoremap <C-k> <c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<cr>
 cnoremap <C-b> <left>
-
-" Use Fzf for completions where applicable
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
 
 " Provide a interactive cheat-sheet for leader mappings with WhichKey
 "" Configure general settings
