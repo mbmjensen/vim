@@ -193,13 +193,13 @@ let g:which_key_map_n.s = {
     \ 'z' : [':FZF',       'FZF'],
     \ }
 
-nnoremap <silent> <space>oq  :copen<CR>
-nnoremap <silent> <space>ol  :lopen<CR>
 let g:which_key_map_n.o = {
-      \ 'name' : '+open',
-      \ 'q' : 'open-quickfix'    ,
-      \ 'l' : 'open-locationlist',
-      \ }
+    \ 'name' : '+open',
+    \ 'l': ['lopen',     'location-list'],
+    \ 'f': [':!open %',  'current-file'],
+    \ 'q': ['copen',     'quickfix'],
+    \ 't' : ['terminal', 'terminal'],
+    \ }
 
 let g:which_key_map_n.g = {
     \ 'name' : '+git',
