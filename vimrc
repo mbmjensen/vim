@@ -107,22 +107,7 @@ set splitright
 " Set the delay for key code sequences (not key mappings)
 set ttimeoutlen=100
 
-" Use s for [s]earch instead of [s]ubstitute
-nnoremap s <nop>
-nnoremap <silent> sf :Files<cr>
-nnoremap <silent> sb :Buffers<cr>
-nnoremap <silent> sj :Marks<cr>
-nnoremap <silent> sm :Maps<cr>
-nnoremap <silent> sh :Helptags<cr>
-nnoremap <silent> ss :Snippets<cr>
-nnoremap <silent> sg :GFiles<cr>
-nnoremap <silent> sw :Windows<cr>
-nnoremap <silent> sl :Lines<cr>
-nnoremap <silent> sL :BLines<cr>
-nnoremap <silent> sc :Commits<cr>
-nnoremap <silent> sC :BCommits<cr>
-nnoremap <silent> st :Filetypes<cr>
-
+" Create sensible ways to search search and command history
 nnoremap <silent> q/ :History/<cr>
 nnoremap <silent> q: :History:<cr>
 
@@ -143,6 +128,27 @@ cnoremap <C-b> <left>
 " Provide a interactive cheat-sheet for leader mappings with WhichKey
 "" Configure general settings
 let g:which_key_sep = '→'
+
+"" Use s for [s]earch instead of [s]ubstitute
+nnoremap s <nop>
+let g:which_key_map_s =  {
+    \ 'f' : ['Files',     'files'],
+    \ 'b' : ['Buffers',   'buffers'],
+    \ 'j' : ['Marks',     'marks'],
+    \ 'm' : ['Maps',      'maps'],
+    \ 'h' : ['Helptags',  'help'],
+    \ 's' : ['Snippets',  'snippets'],
+    \ 'g' : ['GFiles',    'git-files'],
+    \ 'w' : ['Windows',   'windows'],
+    \ 'l' : ['Lines',     'lines'],
+    \ 'L' : ['BLines',    'buffer-lines'],
+    \ 'c' : ['Commits',   'commits'],
+    \ 'C' : ['BCommits',  'buffer-commits'],
+    \ 't' : ['Filetypes', 'filetype'],
+    \ }
+
+nnoremap <silent> s :WhichKey 'Search'<cr>
+autocmd VimEnter * call which_key#register('Search', 'g:which_key_map_s')
 
 "" Configure Normal mode mappings
 let g:which_key_map_n =  {}
