@@ -43,12 +43,14 @@ if exists('+termguicolors')
   let &t_8b = "\<esc>[48;2;%lu;%lu;%lum"    " https://github.com/tmux/tmux/issues/1246#issue-292083184
   set termguicolors                         " Indicate that the terminal supports True Color
 endif
+
 set background=light   " Default to light background
 colorscheme PaperColor " Default to PaperColor theme
 set signcolumn=number  " Merge the signcolumn and the number when the number column is active
 set cursorline         " Show the line where the cursor is
 set colorcolumn=89     " Mark the 89th char to suggest max line length at 88 (black)
-if &term =~ 'xterm'    " Make cursor a line on insert mode, but block otherwise
+
+if &term =~ 'xterm' || &term =~ 'screen'    " Make cursor a line on insert mode, but block otherwise
     let &t_SI = "\<esc>[6 q"
     let &t_EI = "\<esc>[2 q"
 endif
