@@ -41,3 +41,6 @@
 [submodule "pack/submodules/start/vim-which-key"]
 	path = pack/submodules/start/vim-which-key
 	url = https://github.com/liuchengxu/vim-which-key
+[submodule "pack/submodules/start/vim-repeat"]
+	path = pack/submodules/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat
