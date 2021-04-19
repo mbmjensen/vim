@@ -201,9 +201,9 @@ let g:which_key_map_n.s = {
 
 let g:which_key_map_n.o = {
     \ 'name': '+open',
-    \ 'l': ['lopen',     'location-list'],
-    \ 'f': [':!open %',  'current-file'],
-    \ 'q': ['copen',     'quickfix'],
+    \ 'l': ['lopen',    'location-list'],
+    \ 'f': [':!open %', 'current-file'],
+    \ 'q': ['copen',    'quickfix'],
     \ 't': ['terminal', 'terminal'],
     \ }
 
@@ -214,7 +214,7 @@ let g:which_key_map_n.g = {
     \ 'f': [':Git fetch',                       'fetch'],
     \ 'p': [':Git pull',                        'pull'],
     \ 'l': [':Git log',                         'log'],
-    \ 'v': [':call feedkeys(":Git branch")',    'branch'],
+    \ 'v': [':call feedkeys(":Git branch ")',   'branch'],
     \ 'm': [':call feedkeys(":Git merge ")',    'merge'],
     \ 'o': [':call feedkeys(":Git checkout ")', 'checkout'],
     \ 's': [':Git',                             'summary'],
@@ -225,16 +225,28 @@ let g:which_key_map_n.g = {
 
 let g:which_key_map_n.n = {
     \ 'name': '+next' ,
-    \ 'b': [':bnext',             'buffer'],
-    \ 'h': [':GitGutterNextHunk', 'hunk (git)'],
-    \ 'q': [':cnext',             'quickfix'],
+    \ 'b': ['<Plug>(movement-bnext)', 'buffer'],
+    \ 'B': ['<Plug>(movement-blast)', 'last-buffer'],
+    \ 'h': ['<Plug>(movement-nhunk)', 'hunk (git)'],
+    \ 'q': ['<Plug>(movement-cnext)', 'quickfix'],
+    \ 'Q': ['<Plug>(movement-clast)', 'last-quickfix'],
+    \ 'l': ['<Plug>(movement-lnext)', 'locationlist'],
+    \ 'L': ['<Plug>(movement-llast)', 'last-locationlist'],
+    \ 't': ['<Plug>(movement-tnext)', 'tab'],
+    \ 'T': ['<Plug>(movement-tlast)', 'last-tab'],
     \ }
 
 let g:which_key_map_n.p = {
     \ 'name': '+previous' ,
-    \ 'b': [':bprevious',         'buffer'],
-    \ 'h': [':GitGutterPrevHunk', 'hunk (git)'],
-    \ 'q': [':cprevious',         'quickfix'],
+    \ 'b': ['<Plug>(movement-bprev)',  'buffer'],
+    \ 'B': ['<Plug>(movement-bFirst)', 'first-buffer'],
+    \ 'h': ['<Plug>(movement-phunk)',  'hunk (git)'],
+    \ 'q': ['<Plug>(movement-cprev)',  'quickfix'],
+    \ 'Q': ['<Plug>(movement-cfirst)', 'first-quickfix'],
+    \ 'l': ['<Plug>(movement-lprev)',  'locationlist'],
+    \ 'L': ['<Plug>(movement-lfirst)', 'first-locationlist'],
+    \ 't': ['<Plug>(movement-tprev)',  'tab'],
+    \ 'T': ['<Plug>(movement-tfirst)', 'first-tab'],
     \ }
 
 let g:which_key_map_n.r = ["<plug>(coc-rename)", "rename"]
