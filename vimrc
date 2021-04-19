@@ -203,11 +203,18 @@ let g:which_key_map_n.o = {
 
 let g:which_key_map_n.g = {
     \ 'name' : '+git',
-    \ 'b' : [':Git blame',         'blame'],
-    \ 's' : [':Git',               'status'],
-    \ 'c' : [':Git commit',        'commit'],
-    \ 'q' : [':GitGutterQuickFix', 'quickfix'],
-    \ 'w' : [':GBrowse',           'browse'],
+    \ 'b' : [':Git blame',                       'blame'],
+    \ 'c' : [':call feedkeys(":Git clone ")',    'clone'],
+    \ 'f' : [':Git fetch',                       'fetch'],
+    \ 'p' : [':Git pull',                        'pull'],
+    \ 'l' : [':Git log',                         'log'],
+    \ 'v' : [':call feedkeys(":Git branch")',    'branch'],
+    \ 'm' : [':call feedkeys(":Git merge ")',    'merge'],
+    \ 'o' : [':call feedkeys(":Git checkout ")', 'checkout'],
+    \ 's' : [':Git',                             'summary'],
+    \ 'S' : [':Git | only',                      'fullscreen-summary'],
+    \ 'w' : [':GBrowse',                         'browse'],
+    \ 'y' : [':call feedkeys(":Git switch ")',   'switch'],
     \ }
 
 let g:which_key_map_n.n = {
