@@ -1,136 +1,116 @@
-" Michael Jensen's vimrc
-"
-" This configuration is only tested and configured on Vim 8.2 and up.
-
-" Check that current VIM instance is compatible
-if &compatible || v:version < 802
+if &compatible || v:version < 802          " Exit if below minimum version this config has been tested on
   finish
 endif
 
-" Load filetype settings, plugins, and maps
-filetype plugin indent on
-syntax enable
+filetype plugin indent on                  " Load filetype settings, plugins, and maps
+syntax enable                              " Enable syntax highlighting
 
-" Default indent settings
-" Defaults tweaked by filetype in vim/indent/ or vim/after/indent/
-set autoindent     " Use indent of previous line on new lines
-set expandtab      " Use spaces instead of tabs
-set shiftwidth=4   " Indent with 4 spaces
-set softtabstop=4  " Insert 4 spaces with the tab key
+                                           " Set default indent settings (customize by filetype in vim/indent/ or vim/after/indent/)
+set autoindent                             " Use indent of previous line on new lines
+set expandtab                              " Use spaces instead of tabs
+set shiftwidth=4                           " Indent with 4 spaces
+set softtabstop=4                          " Insert 4 spaces with the tab key
 
-" Enable backspace to work over most edge cases
-set backspace+=eol     " Line breaks
-set backspace+=indent  " Spaces from 'autoindent'
-set backspace+=start   " The start of the current insertion
+                                           " Enable backspace to work over most edge cases
+set backspace+=eol                         " Line breaks
+set backspace+=indent                      " Spaces from 'autoindent'
+set backspace+=start                       " The start of the current insertion
 
-" Wrap options
-silent! set breakindent  " Indent wrapped lines
-set showbreak=...        " Prefix wrapped rows with 3 dots
-set linebreak            " Wrap lines at word boundaries
+                                           " Wrap options
+silent! set breakindent                    " Indent wrapped lines
+set showbreak=...                          " Prefix wrapped rows with 3 dots
+set linebreak                              " Wrap lines at word boundaries
 
-" Extra 'list' display character options
-set list                   " Turn on list characters by default
-set listchars=             " Clear the default listchars
-set listchars+=tab:»\      " Tab characters, preserve width
-set listchars+=extends:›   " Unwrapped text to screen right
-set listchars+=precedes:‹  " Unwrapped text to screen left
-set listchars+=trail:•     " Trailing spaces
-set listchars+=nbsp:•      " Non-breaking spaces
+                                           " Extra 'list' display character options
+set list                                   " Turn on list characters by default
+set listchars=                             " Clear the default listchars
+set listchars+=tab:»\                      " Tab characters, preserve width
+set listchars+=extends:›                   " Unwrapped text to screen right
+set listchars+=precedes:‹                  " Unwrapped text to screen left
+set listchars+=trail:•                     " Trailing spaces
+set listchars+=nbsp:•                      " Non-breaking spaces
 
-" Appearance settings
+                                           " Appearance settings
 if exists('+termguicolors')
-  let &t_8f = "\<esc>[38;2;%lu;%lu;%lum"    " Fix true color support for tmux, see
-  let &t_8b = "\<esc>[48;2;%lu;%lu;%lum"    " https://github.com/tmux/tmux/issues/1246#issue-292083184
-  set termguicolors                         " Indicate that the terminal supports True Color
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " Fix true color support for tmux, see
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " https://github.com/tmux/tmux/issues/1246#issue-292083184
+    set termguicolors                      " Indicate that the terminal supports True Color
 endif
 
-set background=light   " Default to light background
-colorscheme PaperColor " Default to PaperColor theme
-set signcolumn=number  " Merge the signcolumn and the number when the number column is active
-set cursorline         " Show the line where the cursor is
-set colorcolumn=89     " Mark the 89th char to suggest max line length at 88 (black)
+set background=light                       " Default to light background
+colorscheme PaperColor                     " Default to PaperColor theme
+set cursorline                             " Show the line where the cursor is
+set colorcolumn=89                         " Mark the 89th char to suggest max line length at 88
 
-if &term =~ 'xterm' || &term =~ 'screen'    " Make cursor a line on insert mode, but block otherwise
-    let &t_SI = "\<esc>[6 q"
-    let &t_EI = "\<esc>[2 q"
+if &term =~ 'xterm' || &term =~ 'screen'
+    let &t_SI = "\<Esc>[6 q"               " Make cursor a line on insert mode but block otherwise
+    let &t_EI = "\<Esc>[2 q"               " Make cursor a block when leaving insert mode
 endif
-
-" Set the cursor when entering VIM. I Tried setting the cursor manually, which
-" works, but displays escape codes at the bottom of the screen. This solution
-" avoids this problem.
-if has('autocmd')
+                                           " Sets the cursor to a block by entering and exiting insert mode when
+if has('autocmd')                          " entering vim. Hacky but more effective than other ways I've tried
     autocmd VimEnter * silent normal i
 endif
 
-" Move the viminfo into the vim directory (n denotes name of viminfo file)
-set viminfo+=n~/.vim/.viminfo
+set viminfo+=n~/.vim/.viminfo              " Move the viminfo into the vim directory (n denotes name of viminfo file)
 
-" Keep swapfiles in one dir
-set directory^=~/.vim/cache/swap
+set directory^=~/.vim/cache/swap           " Keep swapfiles in one dir
 
-" Keep undo files, if possible
+                                           " Keep undo files, if possible
 if has('persistent_undo')
-  set undofile
-  set undodir^=~/.vim/cache/undo
+    set undofile
+    set undodir^=~/.vim/cache/undo
 endif
+                                           " Set directories to search when using gf, :find, etc
+set path=.                                 " Search relative to the current file
+set path+=,,                               " Search in the current directory
+set path-=/usr/include                     " Remove the C specific default setting
 
-" Include settings (get rid of C defaults)
-set path-=/usr/include  " Put filetype specific settings in filetypes
-set include=
+set include=                               " Remove the C specific default setting
 
-" Give a prompt instead of rejecting commands such as a risky :write
-set confirm
+set confirm                                " Prompt instead of rejecting commands such as a risky :write
 
-" Use UTF-8 if we can and the env LANG doesn't specify that we shouldn't
-if has('multi_byte') && !exists('$LANG') && &encoding ==# 'latin1'
+if has('multi_byte')                       " Use UTF-8 if possible
   set encoding=utf-8
 endif
 
-" Delete comment leaders when joining lines
-set formatoptions+=j
+set formatoptions+=j                       " Remove comment leader when joining lines
 
-" Don't add two spaces to the end of sentences on a join
-set nojoinspaces
+set nojoinspaces                           " Don't add two spaces to the end of sentences on a join
 
-" Search Settings
-set incsearch   " Show the search pattern while typing
-set ignorecase  " Make the search case-insensitive by default
-set smartcase   " Unless an uppercase character is in the pattern
+                                           " Search Settings
+set incsearch                              " Show the search pattern while typing
+set ignorecase                             " Make the search case-insensitive by default
+set smartcase                              " Unless an uppercase character is in the pattern
 
-" Don't redraw the screen on macros, registers, nor other untyped commands
-set lazyredraw
+set lazyredraw                             " Don't redraw the screen on macros, registers, nor other untyped commands
 
-" New windows go below or right of a split
-set splitbelow
-set splitright
+set splitbelow                             " New windows go below
+set splitright                             " And right of a split
 
-" Set the delay for key code sequences (not key mappings)
-set ttimeoutlen=100
+set ttimeoutlen=100                        " Set the delay for key code sequences, not mappings (default: timeoutlen)
 
-" Create sensible ways to search search and command history
-nnoremap <silent> q/ :History/<cr>
-nnoremap <silent> q: :History:<cr>
+                                           " Create sensible ways to search search and command history
+nnoremap <silent> q/ :History/<CR>
+nnoremap <silent> q: :History:<CR>
 
-" Hook fzf into ins-completion (i_Ctrl-x)
-imap <C-x><C-l> <plug>(fzf-complete-line)
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+                                           " Hook fzf into ins-completion (i_Ctrl-x)
+imap <C-x><C-l> <Plug>(fzf-complete-line)
+inoremap <expr> <C-x><C-f> fzf#vim#complete#path('fd')
 
-" Use common shell bindings in insert and command mode
-inoremap <C-a> <c-o>^
-inoremap <C-e> <end>
-inoremap <C-k> <c-o>D
-cnoremap <C-a> <home>
-cnoremap <C-e> <end>
-cnoremap <C-e> <end>
-cnoremap <C-k> <c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<cr>
-cnoremap <C-b> <left>
+                                           " Use common shell bindings in insert and command mode
+inoremap <C-a> <C-o>^
+inoremap <C-e> <End>
+inoremap <C-k> <C-o>D
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap <C-b> <Left>
 
-" Provide a interactive cheat-sheet for leader mappings with WhichKey
-"" Configure general settings
-let g:which_key_sep = '→'
+                                           " Provide a interactive cheat-sheet for leader mappings with WhichKey
+let g:which_key_sep = '→'                  " Use arrow to separate keys and descriptions
 
-"" Use s for [s]earch instead of [s]ubstitute
-nnoremap s <nop>
+                                           " Use s for [s]earch instead of [s]ubstitute
+nnoremap s <Nop>
 let g:which_key_map_s =  {
     \ 'f': ['Files',     'files'],
     \ 'b': ['Buffers',   'buffers'],
@@ -146,18 +126,14 @@ let g:which_key_map_s =  {
     \ 'C': ['BCommits',  'buffer-commits'],
     \ 't': ['Filetypes', 'filetype'],
     \ }
-
-nnoremap <silent> s :WhichKey 'Search'<cr>
+nnoremap <silent> s :WhichKey 'Search'<CR>
 autocmd VimEnter * call which_key#register('Search', 'g:which_key_map_s')
 
-"" Configure Normal mode mappings
-let g:which_key_map_n =  {}
+let g:which_key_map_n =  {}                " Configure Normal mode mappings
 
-nnoremap <silent> <space>q :q!<cr>
-let g:which_key_map_n.q = 'quit'
+let g:which_key_map_n.q = ['q<bang>', 'quit']
 let g:which_key_map_n.w = ['w',   'write']
 let g:which_key_map_n.x = ['x',   'save/quit']
-
 
 let g:which_key_map_n.t = {
     \ 'name': '+toggle',
@@ -249,7 +225,7 @@ let g:which_key_map_n.p = {
     \ 'T': ['<Plug>(movement-tfirst)', 'first-tab'],
     \ }
 
-let g:which_key_map_n.r = ["<plug>(coc-rename)", "rename"]
+let g:which_key_map_n.r = ["<Plug>(coc-rename)", "rename"]
 
 let g:which_key_map_n.c = {
     \ "name": "+coc",
@@ -264,14 +240,14 @@ let g:which_key_map_n.c = {
     \ }
 
 autocmd VimEnter * call which_key#register('Normal', 'g:which_key_map_n')
-nnoremap <silent> <space> :WhichKey 'Normal'<cr>
+nnoremap <silent> <Space> :WhichKey 'Normal'<CR>
 
-"" Configure Visual mode mappings
+                                           " Configure Visual mode mappings
 let g:which_key_map_v = {
     \ 'a': [":'<,'>EasyAlign",             'align'],
     \ 'y': ['"+y',                         "copy"],
-    \ 'f': ["<plug>(coc-format-selected)", "format"],
+    \ 'f': ["<Plug>(coc-format-selected)", "format"],
     \ }
 
-vnoremap <silent> <space> :WhichKeyVisual 'Visual'<cr>
+vnoremap <silent> <Space> :WhichKeyVisual 'Visual'<CR>
 autocmd VimEnter * call which_key#register('Visual', 'g:which_key_map_v')
