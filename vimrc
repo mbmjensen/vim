@@ -106,70 +106,68 @@ let g:which_key_sep = '→'                  " Use arrow to separate keys and de
                                            " Use s for [s]earch instead of [s]ubstitute
 nnoremap s <Nop>
 let g:which_key_map_s =  {
-    \ ';': [':Commands',             'commands'],
-    \ 'b': ['Buffers',               'buffers'],
-    \ 'C': ['BCommits',              'buffer-commits'],
-    \ 'c': ['Commits',               'commits'],
-    \ 'd': ['GFiles?',               'dirty-git'],
-    \ 'f': ['Files',                 'files'],
-    \ 'g': ['GFiles',                'git-files'],
-    \ 'h': ['Helptags',              'help'],
-    \ 'j': ['Marks',                 'marks'],
-    \ 'L': ['BLines',                'buffer-lines'],
-    \ 'l': ['Lines',                 'lines'],
-    \ 'm': ['Maps',                  'maps'],
-    \ 'r': ['call feedkeys(":Rg ")', 'Rg'],
-    \ 's': ['Snippets',              'snippets'],
-    \ 't': ['Filetypes',             'filetype'],
-    \ 'w': ['Windows',               'windows'],
+    \ ';': [':Commands',              'commands'],
+    \ 'b': [':Buffers',               'buffers'],
+    \ 'C': [':BCommits',              'buffer-commits'],
+    \ 'c': [':Commits',               'commits'],
+    \ 'd': [':GFiles?',               'dirty-git'],
+    \ 'f': [':Files',                 'files'],
+    \ 'g': [':GFiles',                'git-files'],
+    \ 'h': [':Helptags',              'help'],
+    \ 'j': [':Marks',                 'marks'],
+    \ 'L': [':BLines',                'buffer-lines'],
+    \ 'l': [':Lines',                 'lines'],
+    \ 'm': [':Maps',                  'maps'],
+    \ 'r': [':call feedkeys(":Rg ")', 'Rg'],
+    \ 's': [':Snippets',              'snippets'],
+    \ 't': [':Filetypes',             'filetype'],
+    \ 'w': [':Windows',               'windows'],
     \ }
 nnoremap <silent> s :WhichKey 'Search'<CR>
 autocmd VimEnter * call which_key#register('Search', 'g:which_key_map_s')
-
-let g:which_key_map_n =  {}                " Configure Normal mode mappings
-
-let g:which_key_map_n.q = ['quit', 'quit']
-let g:which_key_map_n.w = ['write',   'write']
-let g:which_key_map_n.x = ['xit',   'save/quit']
+                                           " Configure Normal mode mappings
+let g:which_key_map_n =  {
+    \ 'q': [':quit',  'quit'],
+    \ 'w': [':write', 'write'],
+    \ 'x': [':xit',   'xit'],
+    \ }
 
 let g:which_key_map_n.t = {
     \ 'name': '+toggle',
+    \ 'g': [':GitGutterSignsToggle',  'git gutter']
     \ 'n': [':set number!', 'line numbers'],
     \ 's': [':set spell!',  'spell check'],
-    \ }
-
-let g:which_key_map_n.e = {
-    \ 'name': '+edit',
-    \ 'v': ['vimrc#edit()', 'vimrc'],
+    \ 'w': [':set wrap!', 'line wrap']
     \ }
 
 let g:which_key_map_n.l = {
     \ 'name': '+load',
-    \ 'v': ['vimrc#save_and_source()', 'vimrc'],
+    \ 'v': [':call vimrc#save_and_source()', 'vimrc'],
     \ }
 
 let g:which_key_map_n.o = {
     \ 'name': '+open',
-    \ 'l': ['lopen',    'location-list'],
-    \ 'f': [':!open %', 'current-file'],
-    \ 'q': ['copen',    'quickfix'],
-    \ 't': ['terminal', 'terminal'],
+    \ 'f': [':!open %',           'current-file'],
+    \ 'l': [':lopen',             'location-list'],
+    \ 'q': [':copen',             'quickfix'],
+    \ 't': [':terminal',          'terminal'],
+    \ 'v': [':call vimrc#edit()', 'vimrc'],
     \ }
 
 let g:which_key_map_n.g = {
     \ 'name': '+git',
     \ 'b': [':Git blame',                           'blame'],
     \ 'c': [':call feedkeys(":Git clone ")',        'clone'],
-    \ 'd': [':Git difftool',                        'diff HEAD~1'],
     \ 'D': [':call feedkeys("Git difftool HEAD~")', 'diff HEAD~N'],
+    \ 'd': [':Git difftool',                        'diff HEAD~1'],
     \ 'f': [':Git fetch',                           'fetch'],
     \ 'l': [':Git log',                             'log'],
     \ 'm': [':call feedkeys(":Git merge ")',        'merge'],
     \ 'o': [':call feedkeys(":Git checkout ")',     'checkout'],
     \ 'p': [':Git pull',                            'pull'],
     \ 'r': [':call feedkeys(":Git reset ")',        'reset'],
-    \ 's': [':Git',                                 'summary'],
     \ 'S': [':Git | only',                          'fullscreen-summary'],
+    \ 's': [':Git',                                 'summary'],
     \ 'v': [':call feedkeys(":Git branch ")',       'branch'],
     \ 'w': [':GBrowse',                             'browse'],
     \ 'y': [':call feedkeys(":Git switch ")',       'switch'],
@@ -177,38 +175,38 @@ let g:which_key_map_n.g = {
 
 let g:which_key_map_n.n = {
     \ 'name': '+next' ,
-    \ 'b': ['<Plug>(movement-bnext)', 'buffer'],
     \ 'B': ['<Plug>(movement-blast)', 'last-buffer'],
+    \ 'b': ['<Plug>(movement-bnext)', 'buffer'],
     \ 'h': ['<Plug>(movement-nhunk)', 'hunk (git)'],
-    \ 'q': ['<Plug>(movement-cnext)', 'quickfix'],
-    \ 'Q': ['<Plug>(movement-clast)', 'last-quickfix'],
-    \ 'l': ['<Plug>(movement-lnext)', 'locationlist'],
     \ 'L': ['<Plug>(movement-llast)', 'last-locationlist'],
+    \ 'l': ['<Plug>(movement-lnext)', 'locationlist'],
+    \ 'Q': ['<Plug>(movement-clast)', 'last-quickfix'],
+    \ 'q': ['<Plug>(movement-cnext)', 'quickfix'],
     \ }
 
 let g:which_key_map_n.p = {
     \ 'name': '+previous' ,
-    \ 'b': ['<Plug>(movement-bprev)',  'buffer'],
     \ 'B': ['<Plug>(movement-bFirst)', 'first-buffer'],
+    \ 'b': ['<Plug>(movement-bprev)',  'buffer'],
     \ 'h': ['<Plug>(movement-phunk)',  'hunk (git)'],
-    \ 'q': ['<Plug>(movement-cprev)',  'quickfix'],
-    \ 'Q': ['<Plug>(movement-cfirst)', 'first-quickfix'],
-    \ 'l': ['<Plug>(movement-lprev)',  'locationlist'],
     \ 'L': ['<Plug>(movement-lfirst)', 'first-locationlist'],
+    \ 'l': ['<Plug>(movement-lprev)',  'locationlist'],
+    \ 'Q': ['<Plug>(movement-cfirst)', 'first-quickfix'],
+    \ 'q': ['<Plug>(movement-cprev)',  'quickfix'],
     \ }
 
-let g:which_key_map_n.r = ["<Plug>(coc-rename)", "rename"]
+let g:which_key_map_n.r = ['<Plug>(coc-rename)', 'rename']
 
 let g:which_key_map_n.c = {
-    \ "name": "+coc",
-    \ "a": [":CocAction",      "action"],
-    \ "c": [":CocCommand",     "command"],
-    \ "d": [":CocDiagnostics", "diagnostics"],
-    \ "r": [":CocRestart",     "restart"],
-    \ "e": [":CocConfig",      "edit-config"],
-    \ "l": [":CocList",        "list"],
-    \ "o": [":CocLocalConfig", "edit-local-config"],
-    \ "u": [":CocUpdate",      "update"],
+    \ 'name': '+coc',
+    \ 'a': [':CocAction',      'action'],
+    \ 'c': [':CocCommand',     'command'],
+    \ 'd': [':CocDiagnostics', 'diagnostics'],
+    \ 'e': [':CocConfig',      'edit-config'],
+    \ 'l': [':CocList',        'list'],
+    \ 'o': [':CocLocalConfig', 'edit-local-config'],
+    \ 'r': [':CocRestart',     'restart'],
+    \ 'u': [':CocUpdate',      'update'],
     \ }
 
 autocmd VimEnter * call which_key#register('Normal', 'g:which_key_map_n')
@@ -216,9 +214,9 @@ nnoremap <silent> <Space> :WhichKey 'Normal'<CR>
 
                                            " Configure Visual mode mappings
 let g:which_key_map_v = {
-    \ 'a': [":'<,'>EasyAlign",             'align'],
-    \ 'f': ["<Plug>(coc-format-selected)", "format"],
-    \ 'y': ['"+y',                         "copy"],
+    \ 'a': [':'<,'>EasyAlign',             'align'],
+    \ 'f': ['<Plug>(coc-format-selected)', 'format'],
+    \ 'y': ['"+y',                         'copy'],
     \ }
 
 vnoremap <silent> <Space> :WhichKeyVisual 'Visual'<CR>
