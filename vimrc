@@ -126,18 +126,17 @@ let g:which_key_map_s =  {
 nnoremap <silent> s :WhichKey 'Search'<CR>
 autocmd VimEnter * call which_key#register('Search', 'g:which_key_map_s')
                                            " Configure Normal mode mappings
-let g:which_key_map_n =  {
-    \ 'q': [':quit',  'quit'],
-    \ 'w': [':write', 'write'],
-    \ 'x': [':xit',   'xit'],
-    \ }
+let g:which_key_map_n = {}
+let g:which_key_map_n.q = [':quit',  'quit']
+let g:which_key_map_n.w = [':write', 'write']
+let g:which_key_map_n.x = [':xit',   'xit']
 
 let g:which_key_map_n.t = {
     \ 'name': '+toggle',
-    \ 'g': [':GitGutterSignsToggle',  'git gutter']
+    \ 'g': [':GitGutterSignsToggle',  'git gutter'],
     \ 'n': [':set number!', 'line numbers'],
     \ 's': [':set spell!',  'spell check'],
-    \ 'w': [':set wrap!', 'line wrap']
+    \ 'w': [':set wrap!', 'line wrap'],
     \ }
 
 let g:which_key_map_n.l = {
@@ -214,7 +213,7 @@ nnoremap <silent> <Space> :WhichKey 'Normal'<CR>
 
                                            " Configure Visual mode mappings
 let g:which_key_map_v = {
-    \ 'a': [':'<,'>EasyAlign',             'align'],
+    \ 'a': [":'<,'>EasyAlign",             'align'],
     \ 'f': ['<Plug>(coc-format-selected)', 'format'],
     \ 'y': ['"+y',                         'copy'],
     \ }
