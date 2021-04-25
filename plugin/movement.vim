@@ -33,16 +33,6 @@ nnoremap <silent> <Plug>(movement-lprev) :lprev<CR>
 nnoremap <silent> <Plug>(movement-lfirst) :lfirst<CR>
     \ :call repeat#set("\<Plug>(movement-lfirst)")<CR>
 
-" Tabs
-nnoremap <silent> <Plug>(movement-tnext) :tnext<CR>
-    \ :call repeat#set("\<Plug>(movement-tnext)")<CR>
-nnoremap <silent> <Plug>(movement-tlast) :tlast<CR>
-    \ :call repeat#set("\<Plug>(movement-tlast)")<CR>
-nnoremap <silent> <Plug>(movement-tprev) :tprev<CR>
-    \ :call repeat#set("\<Plug>(movement-tprev)")<CR>
-nnoremap <silent> <Plug>(movement-tfirst) :tfirst<CR>
-    \ :call repeat#set("\<Plug>(movement-tfirst)")<CR>
-
 " Git Hunks
 nnoremap <silent> <Plug>(movement-nhunk) :GitGutterNextHunk<CR>
     \ :call repeat#set("\<Plug>(movement-nhunk)")<CR>

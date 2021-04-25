@@ -208,8 +208,6 @@ let g:which_key_map_n.n = {
     \ 'Q': ['<Plug>(movement-clast)', 'last-quickfix'],
     \ 'l': ['<Plug>(movement-lnext)', 'locationlist'],
     \ 'L': ['<Plug>(movement-llast)', 'last-locationlist'],
-    \ 't': ['<Plug>(movement-tnext)', 'tab'],
-    \ 'T': ['<Plug>(movement-tlast)', 'last-tab'],
     \ }
 
 let g:which_key_map_n.p = {
@@ -221,8 +219,6 @@ let g:which_key_map_n.p = {
     \ 'Q': ['<Plug>(movement-cfirst)', 'first-quickfix'],
     \ 'l': ['<Plug>(movement-lprev)',  'locationlist'],
     \ 'L': ['<Plug>(movement-lfirst)', 'first-locationlist'],
-    \ 't': ['<Plug>(movement-tprev)',  'tab'],
-    \ 'T': ['<Plug>(movement-tfirst)', 'first-tab'],
     \ }
 
 let g:which_key_map_n.r = ["<Plug>(coc-rename)", "rename"]
