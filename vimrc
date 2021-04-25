@@ -217,7 +217,7 @@ let g:which_key_map_v = {
     \ 'a': [":'<,'>EasyAlign",             'align'],
     \ 'f': ['<Plug>(coc-format-selected)', 'format'],
     \ 's': ['<Plug>(coc-snippets-select)', 'snippet-visual'],
-    \ 'y': ['"+y',                         'copy'],
+    \ 'y': [":'<,'>y +",                   'clip'],
     \ }
 
 vnoremap <silent> <Space> :WhichKeyVisual 'Visual'<CR>
