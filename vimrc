@@ -195,7 +195,8 @@ let g:which_key_map_n.p = {
     \ 'q': ['<Plug>(movement-cprev)',  'quickfix'],
     \ }
 
-let g:which_key_map_n.r = ['<Plug>(coc-rename)', 'rename']
+let g:which_key_map_n.r = [':call feedkeys("*#:%s///gc\<Left>\<Left>\<Left>")', 'replace']
+let g:which_key_map_n.R = [':call feedkeys("*#:%s///g\<Left>\<Left>")', 'replace-no-confirm']
 
 let g:which_key_map_n.c = {
     \ 'name': '+coc',
@@ -215,6 +216,7 @@ nnoremap <silent> <Space> :WhichKey 'Normal'<CR>
                                            " Configure Visual mode mappings
 let g:which_key_map_v = {
     \ 'a': [":'<,'>EasyAlign",             'align'],
+    \ 'c': [":'<,'>CocAction",             'coc-action'],
     \ 'f': ['<Plug>(coc-format-selected)', 'format'],
     \ 's': ['<Plug>(coc-snippets-select)', 'snippet-visual'],
     \ 'y': [":'<,'>y +",                   'clip'],
