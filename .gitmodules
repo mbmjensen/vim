@@ -56,3 +56,6 @@
 [submodule "pack/submodules/start/vim-speeddating"]
 	path = pack/submodules/start/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating
+[submodule "ultisnip-snippets"]
+	path = ultisnip-snippets
+	url = https://github.com/mbmjensen/ultisnip-snippets

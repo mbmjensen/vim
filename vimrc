@@ -146,11 +146,12 @@ let g:which_key_map_n.l = {
 
 let g:which_key_map_n.o = {
     \ 'name': '+open',
-    \ 'f': [':!open %',           'current-file'],
-    \ 'l': [':lopen',             'location-list'],
-    \ 'q': [':copen',             'quickfix'],
-    \ 't': [':terminal',          'terminal'],
-    \ 'v': [':call vimrc#edit()', 'vimrc'],
+    \ 'f': [':!open %',                          'current-file'],
+    \ 'l': [':lopen',                            'location-list'],
+    \ 's': [':CocCommand snippets.editSnippets', 'snippet-current-ft'],
+    \ 'q': [':copen',                            'quickfix'],
+    \ 't': [':terminal',                         'terminal'],
+    \ 'v': [':call vimrc#edit()',                'vimrc'],
     \ }
 
 let g:which_key_map_n.g = {
@@ -176,7 +177,7 @@ let g:which_key_map_n.n = {
     \ 'name': '+next' ,
     \ 'B': ['<Plug>(movement-blast)', 'last-buffer'],
     \ 'b': ['<Plug>(movement-bnext)', 'buffer'],
-    \ 'h': ['<Plug>(movement-nhunk)', 'hunk (git)'],
+    \ 'h': ['<Plug>(movement-nhunk)', 'hunk-git'],
     \ 'L': ['<Plug>(movement-llast)', 'last-locationlist'],
     \ 'l': ['<Plug>(movement-lnext)', 'locationlist'],
     \ 'Q': ['<Plug>(movement-clast)', 'last-quickfix'],
@@ -187,7 +188,7 @@ let g:which_key_map_n.p = {
     \ 'name': '+previous' ,
     \ 'B': ['<Plug>(movement-bFirst)', 'first-buffer'],
     \ 'b': ['<Plug>(movement-bprev)',  'buffer'],
-    \ 'h': ['<Plug>(movement-phunk)',  'hunk (git)'],
+    \ 'h': ['<Plug>(movement-phunk)',  'hunk-git'],
     \ 'L': ['<Plug>(movement-lfirst)', 'first-locationlist'],
     \ 'l': ['<Plug>(movement-lprev)',  'locationlist'],
     \ 'Q': ['<Plug>(movement-cfirst)', 'first-quickfix'],
@@ -215,6 +216,7 @@ nnoremap <silent> <Space> :WhichKey 'Normal'<CR>
 let g:which_key_map_v = {
     \ 'a': [":'<,'>EasyAlign",             'align'],
     \ 'f': ['<Plug>(coc-format-selected)', 'format'],
+    \ 's': ['<Plug>(coc-snippets-select)', 'snippet-visual'],
     \ 'y': ['"+y',                         'copy'],
     \ }
 
