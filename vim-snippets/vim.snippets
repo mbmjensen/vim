@@ -1,0 +1,5 @@
+snippet guard "Global / configuration variable" b
+if !exists("g:${1}")
+    let g:$1 = ${2:"1"}
+endif
+endsnippet

@@ -32,9 +32,6 @@
 	path = pack/submodules/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
 	branch = release
-[submodule "pack/submodules/start/vim-snippets"]
-	path = pack/submodules/start/vim-snippets
-	url = https://github.com/mbmjensen/vim-snippets
 [submodule "pack/submodules/start/vim-rhubarb"]
 	path = pack/submodules/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
