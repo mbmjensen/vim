@@ -9,6 +9,6 @@ function! vimrc#save_and_source()
         wq
         source $MYVIMRC
     else
-        echom "VIMRC must be opened with vimrc#edit before vimrc#save_and_source can run"
+        source $MYVIMRC
     endif
 endfunction
