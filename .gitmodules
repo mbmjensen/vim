@@ -13,9 +13,6 @@
 [submodule "pack/submodules/start/vim-commentary"]
 	path = pack/submodules/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "pack/submodules/start/papercolor-theme"]
-	path = pack/submodules/start/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme
 [submodule "pack/submodules/start/tagbar"]
 	path = pack/submodules/start/tagbar
 	url = https://github.com/majutsushi/tagbar
@@ -35,9 +32,6 @@
 [submodule "pack/submodules/start/vim-rhubarb"]
 	path = pack/submodules/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
-[submodule "pack/submodules/start/vim-which-key"]
-	path = pack/submodules/start/vim-which-key
-	url = https://github.com/liuchengxu/vim-which-key
 [submodule "pack/submodules/start/vim-repeat"]
 	path = pack/submodules/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
