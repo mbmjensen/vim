@@ -6,13 +6,14 @@ source $DEV_DIR/fzf/plugin/fzf.vim
 " https://github.com/junegunn/fzf/blob/master/README-VIM.md
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
+  \ 'bg':      ['bg', 'CursorColumn'],
   \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'fg+':     ['bg', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorColumn'],
   \ 'hl+':     ['fg', 'Statement'],
   \ 'info':    ['fg', 'PreProc'],
   \ 'border':  ['fg', 'Ignore'],
+  \ 'gutter':  ['bg', 'CursorColumn'],
   \ 'prompt':  ['fg', 'Conditional'],
   \ 'pointer': ['fg', 'Exception'],
   \ 'marker':  ['fg', 'Keyword'],
