@@ -50,3 +50,9 @@
 [submodule "ultisnip-snippets"]
 	path = ultisnip-snippets
 	url = https://github.com/mbmjensen/ultisnip-snippets
+[submodule "pack/submodules/start/vim-which-key"]
+	path = pack/submodules/start/vim-which-key
+	url = https://github.com/mbmjensen/vim-which-key
+[submodule "pack/submodules/start/papercolor-theme"]
+	path = pack/submodules/start/papercolor-theme
+	url = https://github.com/mbmjensen/papercolor-theme
