@@ -16,9 +16,6 @@
 [submodule "pack/submodules/start/tagbar"]
 	path = pack/submodules/start/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule "pack/submodules/start/ultisnips"]
-	path = pack/submodules/start/ultisnips
-	url = https://github.com/SirVer/ultisnips
 [submodule "pack/submodules/start/fzf.vim"]
 	path = pack/submodules/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
