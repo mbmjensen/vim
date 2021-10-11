@@ -89,6 +89,12 @@ set splitright                             " And right of a split
 set ttimeoutlen=100                        " Set the delay for key code sequences, not mappings (default: timeoutlen)
 
                                            " Create sensible ways to search search and command history
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+
 nnoremap <silent> q/ :History/<CR>
 nnoremap <silent> q: :History:<CR>
                                            " Hook fzf into ins-completion (i_Ctrl-x)
@@ -137,10 +143,12 @@ let g:which_key_map_n.x = [':xit',   'xit']
 
 let g:which_key_map_n.t = {
     \ 'name': '+toggle',
-    \ 'g': [':GitGutterSignsToggle',  'git gutter'],
-    \ 'n': [':set number!', 'line numbers'],
-    \ 's': [':set spell!',  'spell check'],
-    \ 'w': [':set wrap!', 'line wrap'],
+    \ 'c': [':Colors',               'colorscheme'],
+    \ 'h': [':colorscheme hubble',   'hubble'],
+    \ 'g': [':GitGutterSignsToggle', 'git gutter'],
+    \ 'n': [':set number!',          'line numbers'],
+    \ 's': [':set spell!',           'spell check'],
+    \ 'w': [':set wrap!',            'line wrap'],
     \ }
 
 let g:which_key_map_n.l = {
@@ -157,6 +165,8 @@ let g:which_key_map_n.o = {
     \ 't': [':terminal',                         'terminal'],
     \ 'v': [':call vimrc#edit()',                'vimrc'],
     \ }
+
+let g:which_key_map_n.s = [':call SynGroup()', 'syntax-group']
 
 let g:which_key_map_n.g = {
     \ 'name': '+git',
