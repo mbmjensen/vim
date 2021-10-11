@@ -35,6 +35,10 @@ if exists('+termguicolors')
     set termguicolors                      " Indicate that the terminal supports True Color
 endif
 
+set fillchars=vert:│                       " Set the vertical window separating character
+set fillchars+=fold:-                      " Fills the foldtext
+set fillchars+=eob:~                       " Mark empty lines below the end of the buffer
+
 set background=light                       " Default to light background
 colorscheme PaperColor                     " Default to PaperColor theme
 set cursorline                             " Show the line where the cursor is
