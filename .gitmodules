@@ -1,58 +1,77 @@
 [submodule "pack/submodules/start/vim-vinegar"]
 	path = pack/submodules/start/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar
+	update = merge
 [submodule "pack/submodules/start/vim-surround"]
 	path = pack/submodules/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+	update = merge
 [submodule "pack/submodules/start/vim-fugitive"]
 	path = pack/submodules/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+	update = merge
 [submodule "pack/submodules/start/vim-gitgutter"]
 	path = pack/submodules/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+	update = merge
 [submodule "pack/submodules/start/vim-commentary"]
 	path = pack/submodules/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+	update = merge
 [submodule "pack/submodules/start/tagbar"]
 	path = pack/submodules/start/tagbar
 	url = https://github.com/majutsushi/tagbar
+	update = merge
 [submodule "pack/submodules/start/fzf.vim"]
 	path = pack/submodules/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+	update = merge
 [submodule "pack/submodules/start/vim-easy-align"]
 	path = pack/submodules/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align
+	update = merge
 [submodule "pack/submodules/start/coc.nvim"]
 	path = pack/submodules/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
+	update = merge
 	branch = release
 [submodule "pack/submodules/start/vim-rhubarb"]
 	path = pack/submodules/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
+	update = merge
 [submodule "pack/submodules/start/vim-repeat"]
 	path = pack/submodules/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+	update = merge
 [submodule "pack/submodules/start/vim-dadbod"]
 	path = pack/submodules/start/vim-dadbod
 	url = https://github.com/tpope/vim-dadbod
+	update = merge
 [submodule "pack/submodules/start/vim-endwise"]
 	path = pack/submodules/start/vim-endwise
 	url = https://github.com/tpope/vim-endwise
+	update = merge
 [submodule "pack/submodules/start/vim-eunoch"]
 	path = pack/submodules/start/vim-eunoch
 	url = https://github.com/tpope/vim-eunuch
+	update = merge
 [submodule "pack/submodules/start/vim-jdaddy"]
 	path = pack/submodules/start/vim-jdaddy
 	url = https://github.com/tpope/vim-jdaddy
+	update = merge
 [submodule "pack/submodules/start/vim-speeddating"]
 	path = pack/submodules/start/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating
+	update = merge
 [submodule "ultisnip-snippets"]
 	path = ultisnip-snippets
 	url = https://github.com/mbmjensen/ultisnip-snippets
+	update = merge
 [submodule "pack/submodules/start/vim-which-key"]
 	path = pack/submodules/start/vim-which-key
 	url = https://github.com/mbmjensen/vim-which-key
+	update = merge
 [submodule "pack/submodules/start/papercolor-theme"]
 	path = pack/submodules/start/papercolor-theme
 	url = https://github.com/mbmjensen/papercolor-theme
+	update = merge
