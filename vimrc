@@ -40,7 +40,11 @@ set fillchars+=fold:-                      " Fills the foldtext
 set fillchars+=eob:~                       " Mark empty lines below the end of the buffer
 
 set background=light                       " Default to light background
-colorscheme PaperColor                     " Default to PaperColor theme
+try
+    colorscheme PaperColor
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert
+endtry
 set cursorline                             " Show the line where the cursor is
 set colorcolumn=89                         " Mark the 89th char to suggest max line length at 88
 
@@ -51,6 +55,12 @@ endif
                                            " Sets the cursor to a block by entering and exiting insert mode when
 if has('autocmd')                          " entering vim. Hacky but more effective than other ways I've tried
     autocmd VimEnter * silent normal i
+endif
+
+if !isdirectory(expand('~/.vim/cache'))
+    system('mkdir '.expand('~/.vim/cache'))
+    system('mkdir '.expand('~/.vim/cache/swap'))
+    system('mkdir '.expand('~/.vim/cache/undo'))
 endif
 
 set viminfo+=n~/.vim/.viminfo              " Move the viminfo into the vim directory (n denotes name of viminfo file)
@@ -95,12 +105,13 @@ function! SynGroup()
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
 
-nnoremap <silent> q/ :History/<CR>
-nnoremap <silent> q: :History:<CR>
-                                           " Hook fzf into ins-completion (i_Ctrl-x)
-imap <C-x><C-l> <Plug>(fzf-complete-line)
-inoremap <expr> <C-x><C-f> fzf#vim#complete#path('fd')
-
+if executable('fzf') && isdirectory(expand('~/.vim/pack/submodules/start/fzf.vim'))
+    nnoremap <silent> q/ :History/<CR>
+    nnoremap <silent> q: :History:<CR>
+                                               " Hook fzf into ins-completion (i_Ctrl-x)
+    imap <C-x><C-l> <Plug>(fzf-complete-line)
+    inoremap <expr> <C-x><C-f> fzf#vim#complete#path('fd')
+endif
                                            " Use common readline shortcuts in insert and command mode
 inoremap <C-a> <C-o>^
 inoremap <C-e> <End>
@@ -113,28 +124,30 @@ cnoremap <C-b> <Left>
                                            " Provide a interactive cheat-sheet for leader mappings with WhichKey
 let g:which_key_sep = '→'                  " Use arrow to separate keys and descriptions
 
+if executable('fzf') && isdirectory(expand('~/.vim/pack/submodules/start/fzf.vim'))
+    nnoremap s <Nop>
+    let g:which_key_map_s =  {
+        \ ';': [':Commands',              'commands'],
+        \ 'b': [':Buffers',               'buffers'],
+        \ 'C': [':BCommits',              'buffer-commits'],
+        \ 'c': [':Commits',               'commits'],
+        \ 'd': [':GFiles?',               'dirty-git'],
+        \ 'f': [':Files',                 'files'],
+        \ 'g': [':GFiles',                'git-files'],
+        \ 'h': [':Helptags',              'help'],
+        \ 'j': [':Marks',                 'marks'],
+        \ 'L': [':BLines',                'buffer-lines'],
+        \ 'l': [':Lines',                 'lines'],
+        \ 'm': [':Maps',                  'maps'],
+        \ 'r': [':call feedkeys(":Rg ")', 'Rg'],
+        \ 's': [':Snippets',              'snippets'],
+        \ 't': [':Filetypes',             'filetype'],
+        \ 'w': [':Windows',               'windows'],
+        \ }
+    nnoremap <silent> s :WhichKey 'Search'<CR>
+    autocmd VimEnter * call which_key#register('Search', 'g:which_key_map_s')
+endif
                                            " Use s for [s]earch instead of [s]ubstitute
-nnoremap s <Nop>
-let g:which_key_map_s =  {
-    \ ';': [':Commands',              'commands'],
-    \ 'b': [':Buffers',               'buffers'],
-    \ 'C': [':BCommits',              'buffer-commits'],
-    \ 'c': [':Commits',               'commits'],
-    \ 'd': [':GFiles?',               'dirty-git'],
-    \ 'f': [':Files',                 'files'],
-    \ 'g': [':GFiles',                'git-files'],
-    \ 'h': [':Helptags',              'help'],
-    \ 'j': [':Marks',                 'marks'],
-    \ 'L': [':BLines',                'buffer-lines'],
-    \ 'l': [':Lines',                 'lines'],
-    \ 'm': [':Maps',                  'maps'],
-    \ 'r': [':call feedkeys(":Rg ")', 'Rg'],
-    \ 's': [':Snippets',              'snippets'],
-    \ 't': [':Filetypes',             'filetype'],
-    \ 'w': [':Windows',               'windows'],
-    \ }
-nnoremap <silent> s :WhichKey 'Search'<CR>
-autocmd VimEnter * call which_key#register('Search', 'g:which_key_map_s')
                                            " Configure Normal mode mappings
 let g:which_key_map_n = {}
 let g:which_key_map_n.q = [':quit',  'quit']
@@ -179,7 +192,8 @@ let g:which_key_map_n.g = {
     \ 'm': [':call feedkeys(":Git merge ")',         'merge'],
     \ 'o': [':call feedkeys(":Git checkout ")',      'checkout'],
     \ 'p': [':Git pull',                             'pull'],
-    \ 'r': [':call feedkeys(":Git reset ")',         'reset'],
+    \ 'r': [':Glcd',                                 'change-window-directory'],
+    \ 'R': [':call feedkeys(":Git reset ")',         'reset'],
     \ 'S': [':Git | only',                           'fullscreen-summary'],
     \ 's': [':Git',                                  'summary'],
     \ 'v': [':call feedkeys(":Git branch ")',        'branch'],
