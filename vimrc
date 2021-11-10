@@ -198,6 +198,7 @@ let g:which_key_map_n.g = {
     \ 's': [':Git',                                  'summary'],
     \ 'v': [':call feedkeys(":Git branch ")',        'branch'],
     \ 'w': [':GBrowse',                              'browse'],
+    \ 'W': [":GBrowse!",                             'git-browse-clipboard'],
     \ 'y': [':call feedkeys(":Git switch ")',        'switch'],
     \ }
 
@@ -247,6 +248,8 @@ let g:which_key_map_v = {
     \ 'c': [":'<,'>CocAction",             'coc-action'],
     \ 'f': ['<Plug>(coc-format-selected)', 'format'],
     \ 's': ['<Plug>(coc-snippets-select)', 'snippet-visual'],
+    \ 'w': [":'<,'>GBrowse",               'git-browse'],
+    \ 'W': [":'<,'>GBrowse!",              'git-browse-clipboard'],
     \ 'y': [":'<,'>y +",                   'clip'],
     \ }
 
