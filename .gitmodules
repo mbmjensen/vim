@@ -75,3 +75,6 @@
 	path = pack/submodules/start/papercolor-theme
 	url = https://github.com/mbmjensen/papercolor-theme
 	update = merge
+[submodule "pack/submodules/start/goyo.vim"]
+	path = pack/submodules/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim

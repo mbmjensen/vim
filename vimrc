@@ -16,7 +16,7 @@ set backspace+=indent                      " Spaces from 'autoindent'
 set backspace+=start                       " The start of the current insertion
 
                                            " Wrap options
-silent! set breakindent                    " Indent wrapped lines
+set breakindent                            " Indent wrapped lines
 set showbreak=...                          " Prefix wrapped rows with 3 dots
 set linebreak                              " Wrap lines at word boundaries
 
@@ -172,6 +172,7 @@ let g:which_key_map_n.l = {
 let g:which_key_map_n.o = {
     \ 'name': '+open',
     \ 'f': [':!open %',                          'current-file'],
+    \ 'g': [':Goyo 100',                         'goyo'],
     \ 'l': [':lopen',                            'location-list'],
     \ 's': [':CocCommand snippets.editSnippets', 'snippet-current-ft'],
     \ 'q': [':copen',                            'quickfix'],
