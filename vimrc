@@ -58,9 +58,9 @@ if has('autocmd')                          " entering vim. Hacky but more effect
 endif
 
 if !isdirectory(expand('~/.vim/cache'))
-    system('mkdir '.expand('~/.vim/cache'))
-    system('mkdir '.expand('~/.vim/cache/swap'))
-    system('mkdir '.expand('~/.vim/cache/undo'))
+    eval system('mkdir ' . expand('~/.vim/cache'))
+    eval system('mkdir ' . expand('~/.vim/cache/swap'))
+    eval system('mkdir ' . expand('~/.vim/cache/undo'))
 endif
 
 set viminfo+=n~/.vim/.viminfo              " Move the viminfo into the vim directory (n denotes name of viminfo file)
