@@ -81,3 +81,6 @@
 [submodule "pack/submodules/start/vim-pythonsense"]
 	path = pack/submodules/start/vim-pythonsense
 	url = https://github.com/jeetsukumaran/vim-pythonsense
+[submodule "pack/submodules/start/vim-system-copy"]
+	path = pack/submodules/start/vim-system-copy
+	url = https://github.com/christoomey/vim-system-copy

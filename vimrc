@@ -145,6 +145,11 @@ cnoremap <C-e> <End>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-b> <Left>
 " }}}
+" {{{ Copy Paste
+nmap cy <Plug>SystemCopy
+xmap cy <Plug>SystemCopy
+nmap cp <Plug>SystemPaste
+" }}}
 " {{{ WhichKey
 " {{{ Settings
 " Provide a interactive cheat-sheet for leader mappings with WhichKey
