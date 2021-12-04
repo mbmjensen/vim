@@ -78,3 +78,6 @@
 [submodule "pack/submodules/start/goyo.vim"]
 	path = pack/submodules/start/goyo.vim
 	url = https://github.com/junegunn/goyo.vim
+[submodule "pack/submodules/start/vim-pythonsense"]
+	path = pack/submodules/start/vim-pythonsense
+	url = https://github.com/jeetsukumaran/vim-pythonsense
