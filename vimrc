@@ -200,7 +200,7 @@ let g:which_key_map_n.l = {
 let g:which_key_map_n.o = {
     \ 'name': '+open',
     \ 'f': [':!open %',                          'current-file'],
-    \ 'g': [':Goyo 100',                         'goyo'],
+    \ 'g': [':Goyo 80',                          'goyo'],
     \ 'l': [':lopen',                            'location-list'],
     \ 's': [':CocCommand snippets.editSnippets', 'snippet-current-ft'],
     \ 'q': [':copen',                            'quickfix'],
