@@ -99,12 +99,6 @@ set splitright                             " And right of a split
 set ttimeoutlen=100                        " Set the delay for key code sequences, not mappings (default: timeoutlen)
 
                                            " Create sensible ways to search search and command history
-
-function! SynGroup()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-
 if executable('fzf') && isdirectory(expand('~/.vim/pack/submodules/start/fzf.vim'))
     nnoremap <silent> q/ :History/<CR>
     nnoremap <silent> q: :History:<CR>
