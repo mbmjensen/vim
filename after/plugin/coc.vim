@@ -1,6 +1,10 @@
 " Some servers have issues with backup files
 set nowritebackup
 
+" The cursor will not reappear depending on how a CocList is closed without
+" this
+let g:coc_disable_transparent_cursor = 1
+
 " Give more space for displaying messages
 set cmdheight=2
 
