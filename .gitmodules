@@ -84,3 +84,6 @@
 [submodule "pack/submodules/start/vim-system-copy"]
 	path = pack/submodules/start/vim-system-copy
 	url = https://github.com/christoomey/vim-system-copy
+[submodule "pack/submodules/start/targets.vim"]
+	path = pack/submodules/start/targets.vim
+	url = https://github.com/wellle/targets.vim
