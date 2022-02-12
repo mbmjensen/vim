@@ -63,10 +63,6 @@
 	path = pack/submodules/start/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating
 	update = merge
-[submodule "ultisnip-snippets"]
-	path = ultisnip-snippets
-	url = https://github.com/mbmjensen/ultisnip-snippets
-	update = merge
 [submodule "pack/submodules/start/vim-which-key"]
 	path = pack/submodules/start/vim-which-key
 	url = https://github.com/mbmjensen/vim-which-key
