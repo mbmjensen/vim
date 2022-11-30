@@ -227,6 +227,7 @@ let g:which_key_map_n.g = {
     \ 'm': [':call feedkeys(":Git merge ")',         'merge'],
     \ 'o': [':call feedkeys(":Git checkout ")',      'checkout'],
     \ 'p': [':Git pull',                             'pull'],
+    \ 'P': [':call feedkeys(":Git push")',           'push'],
     \ 'r': [':Glcd',                                 'change-window-directory'],
     \ 'R': [':call feedkeys(":Git reset ")',         'reset'],
     \ 'S': [':Git | only',                           'fullscreen-summary'],
