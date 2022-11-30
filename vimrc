@@ -104,6 +104,7 @@ endif
 
 set viminfo+=n~/.vim/cache/.viminfo
 set directory^=~/.vim/cache/swap
+let g:netrw_home = '~/.vim/cache'
 
 if has('persistent_undo')
     set undofile
