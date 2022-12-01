@@ -1,1 +1,1 @@
-nnoremap cy :Git switch 
+nnoremap <buffer> cy :Git switch 
