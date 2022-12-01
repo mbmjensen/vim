@@ -18,10 +18,6 @@
 	path = pack/submodules/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
 	update = merge
-[submodule "pack/submodules/start/tagbar"]
-	path = pack/submodules/start/tagbar
-	url = https://github.com/majutsushi/tagbar
-	update = merge
 [submodule "pack/submodules/start/fzf.vim"]
 	path = pack/submodules/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
