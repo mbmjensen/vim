@@ -191,10 +191,11 @@ let g:which_key_map_n.x = [':xit',   'xit']
 let g:which_key_map_n.t = {
     \ 'name': '+toggle',
     \ 'c': [':Colors',               'colorscheme'],
-    \ 'h': [':colorscheme hubble',   'hubble'],
     \ 'g': [':GitGutterSignsToggle', 'git gutter'],
+    \ 'h': [':colorscheme hubble',   'hubble'],
     \ 'n': [':set number!',          'line numbers'],
     \ 's': [':set spell!',           'spell check'],
+    \ 'y': [':Goyo',                 'goyo'],
     \ 'w': [':set wrap!',            'line wrap'],
     \ }
 
@@ -206,10 +207,9 @@ let g:which_key_map_n.l = {
 let g:which_key_map_n.o = {
     \ 'name': '+open',
     \ 'f': [':!open %',                          'current-file'],
-    \ 'g': [':Goyo 80',                          'goyo'],
     \ 'l': [':lopen',                            'location-list'],
-    \ 's': [':CocCommand snippets.editSnippets', 'snippet-current-ft'],
     \ 'q': [':copen',                            'quickfix'],
+    \ 's': [':CocCommand snippets.editSnippets', 'snippet-current-ft'],
     \ 't': [':terminal',                         'terminal'],
     \ 'v': [':call vimrc#edit()',                'vimrc'],
     \ }
