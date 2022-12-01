@@ -83,3 +83,6 @@
 [submodule "pack/submodules/start/targets.vim"]
 	path = pack/submodules/start/targets.vim
 	url = https://github.com/wellle/targets.vim
+[submodule "/Users/mjensen/.vim/pack/submodules/opt/vimspector"]
+	path = /Users/mjensen/.vim/pack/submodules/opt/vimspector
+	url = https://github.com/puremourning/vimspector
