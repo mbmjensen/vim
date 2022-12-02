@@ -184,9 +184,10 @@ endif
 " }}}
 " {{{ Normal Mode
 let g:which_key_map_n = {}
-let g:which_key_map_n.q = [':quit',  'quit']
-let g:which_key_map_n.w = [':write', 'write']
-let g:which_key_map_n.x = [':xit',   'xit']
+let g:which_key_map_n.Q = [':quitall', 'quitall']
+let g:which_key_map_n.q = [':quit',    'quit']
+let g:which_key_map_n.w = [':write',   'write']
+let g:which_key_map_n.x = [':xit',     'xit']
 
 let g:which_key_map_n.t = {
     \ 'name': '+toggle',
