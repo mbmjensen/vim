@@ -1,3 +1,5 @@
 {
-    "snippets.userSnippetsDirectory": "~/.vim/ultisnip-snippets"
+    "snippets.userSnippetsDirectory": "~/.vim/ultisnip-snippets",
+    "suggest.virtualText": true,
+    "suggest.noselect": true
 }
